@@ -1,5 +1,5 @@
 #!/bin/bash
-################################################
+################################################################################
 # Name: Bash Master Slave IPC 
 # Synopsis: An implementation of master slave processing and forking with IPC 
 #           communication in Bash.
@@ -8,9 +8,9 @@
 # Date: 10/12/2015
 # Author: Tomm Smith (thims)
 # Email: root DOT packet AT gmail DOT com
-################################################
-
-########### PROTOCOL DOCS #####################
+################################################################################
+#
+########### PROTOCOL DOCS ######################
 # Syntax:  <COMMUNICATION CHANNEL>:<COMMAND>:<data>
 #
 # Possible Channels:
@@ -21,6 +21,7 @@
 #   - DIE - Terminate the server.
 #   - ECHO - Echo specified data.
 #   - ACK - Acknowledge the command.
+
 
 # General functions
 source "./functions.sh"
@@ -72,8 +73,8 @@ do
             send 'SERVER:ERR:Invalid/Malformed data.' "$clie_ipc"
             ;;
         esac
-
-      #*) Parse error when included?
+        
+      #*) # Parse error when included?
       #  echo "SERVER ERROR: INVALID COMMAND: $data"
       #  continue
       #  ;;

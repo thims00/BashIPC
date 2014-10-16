@@ -1,5 +1,5 @@
 #!/bin/bash
-################################################
+################################################################################
 # Name: Bash Master Slave IPC
 # Synopsis: An implementation of master slave processing and forking with IPC
 #           communication in Bash.
@@ -8,18 +8,14 @@
 # Date: 10/12/2015
 # Author: Tomm Smith (thims)
 # Email: root DOT packet AT gmail DOT com
-# ################################################
+################################################################################
 #
-# TODO: 
-# - Add error handling and checking for function arguments.
-#   \- Include file system checks for provided files/FIFOs
-
 ############ ATTENTION ################
 # These functions expect and require the following listed variables 
 # to exist in the parent environment of the shell.
 # plist=() - An indexed array of PIDs of forked/bg'd processes for 
 #            the destructor method.
-[ ! $plist ] && plist=()
+[ ! $plist ] && export plist=()
 
 
 # Wait for $timeout and terminate listening connection.

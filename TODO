@@ -1,1 +1,7 @@
 - Elimintate as many calls to binaries as possible and deduce down to purely bash.
+- Add error handling and checking for function arguments.
+  \- Include file system checks for provided files/FIFOs
+- Deal with the whitespace issue with the IPC communication. White space is 
+  truncates the data following said ' ' character.
+- Incorporate an encoding mechanism to ensure safe transit of data. ASCII 
+  binary would be a good solution.

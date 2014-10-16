@@ -8,23 +8,8 @@
 # Date: 10/12/2015
 # Author: Tomm Smith (thims)
 # Email: root DOT packet AT gmail DOT com
-# ################################################
-#
-# ########### PROTOCOL DOCS #####################
-# # Syntax:  <COMMUNICATION CHANNEL>:<COMMAND>:<data>
-# #
-# # Possible Channels:
-# #  - CLIENT
-# #  - SERVER
-# #
-# # COMMANDS:
-# #   - DIE - Terminate the server.
-# #   - ECHO - Echo specified data.
-# #   - ACK - Acknowledge the command.
+################################################
 
-# TODO
-#   - Introduce a good memory management function for the destruction of the environment in 
-#   destruct().
 
 # General functions
 source functions.sh
