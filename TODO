@@ -1,0 +1,1 @@
+- Elimintate as many calls to binaries as possible and deduce down to purely bash.
