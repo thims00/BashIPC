@@ -101,7 +101,7 @@ declare -A CHAR_TBL=(
 )
 
 # The index for binary to character translation.
-declare -A BINARY_TBL=(
+declare -A BIN_TBL=(
   ['00100000']=' '
   ['00100001']='!'
   ['00100010']='"'
