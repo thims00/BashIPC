@@ -1,5 +1,14 @@
 #!/bin/bash
+
+# These table definitions are used for the transliteration of the ASCII and 
+# binary to the respective opposite. 
+
 # Special characters: * @ \ ]
+# * - XK_asterisk
+# @ - XK_at
+# \ - XK_backslash
+# ] - XK_bracketright
+
 
 # The index of character to binary translation.
 declare -A CHAR_TBL=(
