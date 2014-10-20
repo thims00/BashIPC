@@ -72,9 +72,58 @@ function listen {
 }
 
 
+# Check for the existence of specified FIFO file, and create it upon failure.
+# @arg $1 - The file locations of tested FIFO file.
+#
+# Return: 0 upon a valid FIFO file existing at said location,
+#         1 upon it not existing and creating a FIFO at specified location.
+#         2 upon file existing without being a named pipe.
+function is_fifo {
+  if [ -p "$1" ] ;then
+    if [ ! -r "$1" ] || [ ! -w "$1" ] ;then
+      echo "ERROR: is_fifo(): The named pipe $1 does not have read/write permissions. Unable to connect."
+      return 3
+    fi
+    return 0
+
+  else
+    if [ -e "$1" ] ;then
+      echo "ERROR: is_fifo(): $1 is a file that is not a named pipe. Failed to initate FIFO file."
+      return 2
+
+    else 
+      mkfifo "$1"
+      return 1
+    fi
+  fi    
+}
+
+
+# Delete the specified FIFO file
+# @args $1 - Locations of the FIFO to be destroyed.
+#
+# Return: 0 upon successfully destroying the FIFO.
+#         1 upon invalid permission.
+#         2 upon file not being a FIFO.
+#         3 upon file not existing.
+function rm_fifo {
+  if [ -e "$1" ] ;then
+    if [ ! -p "$1" ] ;then
+      echo "ERROR: rm_fifo(): Destination file is not a FIFO file. Not deleting."
+      return 2
+    elif [ ! -w "$1" ] ;then
+      echo "ERROR: rm_fifo(): Destination file does not have write permissions. Deletion failed."
+      return 1        
+    fi
+  else 
+    return 3
+  fi
+}
+
+
 # Clean up the environment and deal with some of the memory issues.
-# @arg $@ - A space divided list of PIDs to be killed.
-#           ("Infinite" amount of arguments allowed)
+# @arg $1, $2, $3, ... - A space divided list of PIDs to be killed.
+#                        ("Infinite" amount of arguments allowed)
 #
 # Return: 0
 function destruct {
