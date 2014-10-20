@@ -88,6 +88,12 @@ function encode() {
 function decode() {
   [ ! "$1" ] && return 1
   
+  echo "$1" | grep "[^01]" &> /dev/null
+  if [ $? == 0 ] ;then
+    echo "ERROR: decode(): The supplied bit stream included characters and is not a computable stream."
+    return 255
+  fi
+
   strm="$1"
   strm_len=${#1}
   decoded_str=""
