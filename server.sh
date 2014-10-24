@@ -74,7 +74,7 @@ do
             send 'SERVER:ERR:Invalid/Malformed data.' "$clie_ipc"
             ;;
         esac
-        
+
       #*) # Parse error when included?
       #  echo "SERVER ERROR: INVALID COMMAND: $data"
       #  continue
