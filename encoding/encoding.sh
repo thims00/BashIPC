@@ -24,7 +24,7 @@
 
 
 # Our transliteration tables
-source header.sh
+source "./encoding/header.sh"
 
 
 # encode() - A function for encoding ASCII to a numeric representation of binary

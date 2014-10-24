@@ -25,7 +25,7 @@
 
 # General functions
 source "./functions.sh"
-
+source "./encoding/encoding.sh"
 
 # Global variables
 clie_ipc='./clie.fifo'
@@ -66,7 +66,8 @@ do
             ;;
 
           "ECHO")
-            echo "CLIENT DATA: ECHO: ${data[2]}"
+            decoded_str=$(decode "${data[2]}")
+            echo "CLIENT DATA: ECHO:${decoded_str}"
             ;;
 
           *)

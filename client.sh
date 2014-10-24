@@ -13,8 +13,8 @@
 
 
 # General functions
-source functions.sh
-
+source "functions.sh"
+source "encoding/encoding.sh"
 
 # IPC file
 clie_ipc='./clie.fifo'
@@ -65,7 +65,8 @@ do
 done
 
 
-send "CLIENT:$COMMAND:$DATA" "$serv_ipc" 
+encoded_data=$(encode "${DATA}")
+send "CLIENT:$COMMAND:$encoded_data" "$serv_ipc" 
 
 timeout $timeout "$clie_ipc" 
 data=$(listen "$clie_ipc")
@@ -75,7 +76,7 @@ if [ ${#data} -gt 0 ] ;then
   unset IFS
 
   if [ ${data[0]} == 'SERVER' ] && [ ${data[1]} == 'ACK' ] ;then
-    echo "SERVER DATA: ECHO: ${data[2]}"
+    echo "SERVER DATA: ACK: ACK signal received from server. Handshake successful."
 
   else
     echo "INTERNAL ERROR: Invalid response from server."
