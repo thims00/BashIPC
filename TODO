@@ -2,3 +2,4 @@
 - Add error handling and checking for function arguments.
   \- Include file system checks for provided files/FIFOs
 - Decide whether or not to encode all data sent over the line, or only the user provided data?
+- Fix parse error in the parent case statement in server.sh's control loop.
