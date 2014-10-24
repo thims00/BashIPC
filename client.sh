@@ -34,8 +34,7 @@ fi
 
 
 if [ $# == 0 ] ;then
-  echo "Missing arguments."
-  exit 1
+  help 1
 fi
 
 args=("$@")
@@ -43,8 +42,8 @@ for i in $(seq 0 $(($# - 1)))
 do
   case "${args[i]}" in
     '-h' | '--help')
-      echo Help
-      break 1
+      help
+      exit 1
       ;;
    
     '-e' | '--echo')
@@ -60,8 +59,7 @@ do
       ;;
 
     *)
-      echo INVALID INPUT.
-      exit 1
+      help 1
   esac
 done
 
